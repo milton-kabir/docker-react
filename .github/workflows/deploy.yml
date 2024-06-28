@@ -23,8 +23,8 @@ jobs:
 #      - run: docker push cygnetops/multi-server-10-14
 #      - run: docker push cygnetops/multi-worker-10-14
 #
-#      - name: Generate deployment package
-#        run: zip -r deploy.zip . -x '*.git*'
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
@@ -36,4 +36,5 @@ jobs:
           existing_bucket_name: elasticbeanstalk-eu-north-1-637423366038
           region: eu-north-1
           version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
 
